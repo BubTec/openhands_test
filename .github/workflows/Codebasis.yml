@@ -1,0 +1,18 @@
+name: Lint-Codebasis
+
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v3
+
+      - name: Super-Linter ausführen
+        uses: super-linter/super-linter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          IGNORE_GITIGNORED_FILES: true
+          IGNORE_GENERATED_FILES: true
