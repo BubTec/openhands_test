@@ -27,6 +27,7 @@ jobs:
       LLM_MODEL:         ${{ vars.LLM_MODEL           || 'anthropic/claude-3-7-sonnet-20250219' }}
       target_branch:     ${{ vars.TARGET_BRANCH      || 'main' }}
       runner:            ${{ vars.TARGET_RUNNER       || 'ubuntu-latest' }}
+      extra_args:        ${{ vars.OPENHANDS_DISABLE_CONDENSE == 'true' && '--no-condense' || '' }}
     secrets:
       PAT_TOKEN:    ${{ secrets.PAT_TOKEN }}
       PAT_USERNAME: ${{ secrets.PAT_USERNAME }}
